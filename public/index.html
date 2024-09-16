@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messenger Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="chat-container">
+      <div class="chat-header">
+        <h2>Chat Room: <span id="room-name"></span></h2>
+      </div>
+      <div id="chat-box" class="chat-box">
+        <!-- Messages will appear here -->
+      </div>
+      <div id="typing-indicator" class="typing-indicator"></div>
+      <div class="chat-input-area">
+        <!-- Image upload input -->
+        <label for="image-input" class="image-upload-label">📷</label>
+        <input type="file" id="image-input" class="image-upload" accept="image/*" />
+        <!-- Image preview -->
+        <img id="image-preview" class="image-preview" src="" alt="Image Preview" />
+        <!-- Message input and send button -->
+        <input type="text" id="message-input" class="message-input" placeholder="Type a message..." autocomplete="off"/>
+        <button id="send-btn" class="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
