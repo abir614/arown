@@ -1,5 +1,6 @@
 FROM node:lts-alpine
-RUN npm install express body-parser multer uuid
+COPY package.json .
+RUN npm install
 COPY . .
 EXPOSE 8080
 CMD ["npm", "start"]
