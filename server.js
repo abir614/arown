@@ -1,15 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+import express from 'express';
+import bodyParser from 'body-parser';
+import multer from 'multer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { v4 as uuidv4 } from 'uuid';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Setup multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    cb(null, path.join(__dirname, 'uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, uuidv4() + path.extname(file.originalname));
@@ -18,8 +23,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(bodyParser.json());
-app.use(express.static('public')); // For serving static files like HTML, CSS, JS
-app.use('/uploads', express.static('uploads')); // For serving uploaded files
+app.use(express.static(path.join(__dirname, 'public'))); // For serving static files like HTML, CSS, JS
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // For serving uploaded files
 
 let chatRooms = {};  // To store chat rooms and messages
 let usersTyping = {}; // To store typing status
@@ -72,6 +77,5 @@ app.get('/typingStatus/:roomCode', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
-
