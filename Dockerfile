@@ -1,5 +1,5 @@
 FROM node:lts-alpine
-RUN npm install
 COPY . .
+RUN npm install
 EXPOSE 8080
 CMD ["npm", "start"]
