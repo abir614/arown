@@ -4,12 +4,14 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: 'Segoe UI', 'Arial', sans-serif;
-  background-color: #e9ebee;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* App Container */
 #app {
   display: flex;
   justify-content: center;
@@ -17,65 +19,61 @@ body, html {
   height: 100%;
 }
 
+/* Chat Container */
 .chat-container {
   width: 100%;
-  max-width: 420px; /* Standard Android display width */
+  max-width: 450px; /* Increased width for a more spacious layout */
   height: 90%;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background: #1e1e1e; /* Darker background */
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* Message Image */
-.message img.message-image {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-top: 8px;
-  display: block;
-  max-height: 300px; /* Optional: Adjust the max height if needed */
-}
-
 /* Chat Header */
 .chat-header {
-  background-color: #0062cc;
-  padding: 10px;
-  color: white;
+  background: linear-gradient(135deg, #007bff, #00c6ff); /* Gradient header */
+  padding: 12px;
+  color: #ffffff; /* Light text color */
   text-align: center;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px; /* Larger font size */
+  border-bottom: 1px solid #444; /* Darker border */
 }
 
 .chat-header h2 {
   margin: 0;
 }
 
+/* Chat Box */
 .chat-box {
   flex-grow: 1;
-  padding: 15px;
+  padding: 20px; /* More padding for a spacious feel */
   overflow-y: auto;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #444; /* Darker border */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Messages */
 .message {
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 18px;
-  max-width: 70%;
+  padding: 14px;
+  margin-bottom: 10px; /* Increased margin for better spacing */
+  border-radius: 20px; /* More rounded corners */
+  max-width: 80%; /* Increased max-width */
   word-wrap: break-word;
-  font-size: 15px;
+  font-size: 16px; /* Larger font size for better readability */
   position: relative;
-  background-color: #f1f0f0;
+  background-color: #333; /* Darker background for messages */
+  color: #e0e0e0; /* Light text color */
 }
 
 .message.self {
-  background: linear-gradient(45deg, #007bff, #00c6ff);
+  background: linear-gradient(135deg, #007bff, #00c6ff); /* Gradient for self messages */
   color: white;
-  margin-left: auto;
-  text-align: right;
+  align-self: flex-end; /* Align self messages to the right */
 }
 
 .message::before {
@@ -84,95 +82,132 @@ body, html {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 8px 10px 8px 0;
-  border-color: transparent #f1f0f0 transparent transparent;
-  top: 12px;
-  left: -10px;
+  border-width: 12px 14px 12px 0; /* Adjusted for a more subtle effect */
+  border-color: transparent #333 transparent transparent; /* Darker triangle */
+  top: 14px; /* Adjusted for alignment */
+  left: -14px; /* Adjusted for alignment */
 }
 
 .message.self::before {
-  border-color: transparent transparent transparent #007bff;
-  right: -10px;
+  border-color: transparent transparent transparent #007bff; /* Gradient color for self messages */
+  right: -14px; /* Adjusted for alignment */
   left: auto;
 }
 
 /* Message Image */
 .message img.message-image {
   max-width: 100%;
-  border-radius: 10px;
-  margin-top: 8px;
+  border-radius: 12px; /* More rounded corners */
+  margin-top: 10px;
 }
 
 /* Typing Indicator */
 .typing-indicator {
-  height: 20px;
-  margin: 5px 15px;
+  height: 22px;
+  margin: 10px 20px;
   font-style: italic;
-  color: #666;
-  font-size: 14px;
+  color: #aaa; /* Lighter gray text */
+  font-size: 15px; /* Larger font size */
 }
 
 /* Input Area */
 .chat-input-area {
   display: flex;
   align-items: center;
-  padding: 10px;
-  background-color: #f1f0f0;
-  border-top: 1px solid #ddd;
-}
-
-.message-input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  font-size: 14px;
-  outline: none;
-  background-color: #fff;
-  padding-left: 15px;
+  padding: 12px;
+  background-color: #1e1e1e; /* Dark background */
+  border-top: 1px solid #444; /* Darker border */
 }
 
 /* Image Upload Input */
+.image-upload-label {
+  margin-right: 12px; /* Increased space between media button and text box */
+  font-size: 24px; /* Larger media button */
+  cursor: pointer;
+  color: #e0e0e0; /* Light text color */
+  transition: color 0.3s ease;
+}
+
+.image-upload-label:hover {
+  color: #007bff; /* Highlight on hover */
+}
+
+/* Media Button */
 #image-input {
   display: none;
 }
 
+/* Text Input */
+.message-input {
+  flex-grow: 1;
+  padding: 12px; /* Increased padding */
+  border: 1px solid #555; /* Darker border */
+  border-radius: 25px; /* More rounded corners */
+  font-size: 16px; /* Larger font size */
+  outline: none;
+  background-color: #333; /* Darker background */
+  color: #e0e0e0; /* Light text color */
+  padding-left: 20px; /* Increased left padding */
+  transition: background-color 0.3s ease;
+}
+
+.message-input:focus {
+  background-color: #444; /* Slightly lighter background on focus */
+}
+
 /* Image Preview */
 #image-preview {
-  max-width: 100px; /* Adjust size as needed */
-  margin-top: 10px;
-  border-radius: 8px;
+  max-width: 120px; /* Larger preview size */
+  margin-top: 12px;
+  border-radius: 10px; /* More rounded corners */
   display: none; /* Hide by default */
 }
 
 /* Button Styling */
 .send-btn {
-  padding: 10px 15px;
+  padding: 12px 18px; /* Slightly larger button */
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 50%;
   margin-left: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  width: 40px;
-  height: 40px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 50px; /* Larger width */
+  height: 50px; /* Larger height */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Send Button Icon */
+.send-btn::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: solid #fff;
+  border-width: 2px 2px 0 0;
+  transform: rotate(45deg);
+}
+
+/* Hover and Active States for Button */
 .send-btn:hover {
   background-color: #005bb5;
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.send-btn:active {
+  transform: scale(0.95); /* Slightly shrink button on click */
 }
 
 /* Scrollbar Styling */
 .chat-box::-webkit-scrollbar {
-  width: 8px;
+  width: 10px; /* Wider scrollbar */
 }
 
 .chat-box::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+  background-color: #1e1e1e; /* Darker background for track */
 }
 
 .chat-box::-webkit-scrollbar-thumb {
@@ -183,13 +218,13 @@ body, html {
 /* Mobile Styles */
 @media only screen and (max-width: 600px) {
   .message-input {
-    padding: 8px;
+    padding: 10px;
     font-size: 14px;
   }
   
   .send-btn {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
   }
   
   .message {
@@ -197,7 +232,6 @@ body, html {
   }
 
   #image-preview {
-    max-width: 80px;
+    max-width: 100px;
   }
 }
-
