@@ -4,7 +4,7 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: 'Segoe UI', 'Arial', sans-serif;
-  background-color: #121212; /* Dark background */
+  background: linear-gradient(135deg, #121212, #1e1e1e); /* Gradient background */
   color: #e0e0e0; /* Light text color */
   display: flex;
   justify-content: center;
@@ -22,11 +22,11 @@ body, html {
 /* Chat Container */
 .chat-container {
   width: 100%;
-  max-width: 450px; /* Increased width for a more spacious layout */
+  max-width: 400px; /* Decreased width for a more compact layout */
   height: 90%;
-  background: #1e1e1e; /* Darker background */
-  border-radius: 15px; /* More rounded corners */
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+  background: #2a2a2a; /* Darker background */
+  border-radius: 20px; /* More rounded corners */
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -34,40 +34,55 @@ body, html {
 
 /* Chat Header */
 .chat-header {
-  background: linear-gradient(135deg, #007bff, #00c6ff); /* Gradient header */
-  padding: 12px;
+  background: #007bff; /* Header background color */
+  padding: 4px 8px; /* Very minimal padding for compact size */
   color: #ffffff; /* Light text color */
   text-align: center;
   font-weight: bold;
-  font-size: 20px; /* Larger font size */
+  font-size: 12px; /* Smaller font size */
   border-bottom: 1px solid #444; /* Darker border */
+  border-radius: 0 0 20px 20px; /* Rounded bottom corners to create punch hole effect */
+  position: relative;
+  margin: -4px -8px 0 -8px; /* Negative margins to extend punch hole effect */
 }
 
-.chat-header h2 {
-  margin: 0;
+/* Punch Hole Effect */
+.chat-header::before {
+  content: '';
+  position: absolute;
+  width: 40px; /* Width of the punch hole */
+  height: 40px; /* Height of the punch hole */
+  background: #2a2a2a; /* Background color of the chat container */
+  border-radius: 50%; /* Round shape */
+  top: -20px; /* Position the punch hole */
+  left: calc(50% - 20px); /* Center the punch hole */
+  z-index: 1;
 }
 
 /* Chat Box */
 .chat-box {
   flex-grow: 1;
-  padding: 20px; /* More padding for a spacious feel */
+  padding: 16px; /* Adjusted padding for a more compact feel */
   overflow-y: auto;
+  background: linear-gradient(135deg, #1e1e1e, #333); /* Gradient background */
   border-bottom: 1px solid #444; /* Darker border */
   display: flex;
   flex-direction: column;
+  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
 }
 
 /* Messages */
 .message {
-  padding: 14px;
-  margin-bottom: 10px; /* Increased margin for better spacing */
-  border-radius: 20px; /* More rounded corners */
-  max-width: 80%; /* Increased max-width */
+  padding: 10px; /* Reduced padding for smaller bubbles */
+  margin-bottom: 8px; /* Reduced margin for better spacing */
+  border-radius: 18px; /* Smaller rounded corners */
+  max-width: 75%; /* Decreased max-width */
   word-wrap: break-word;
-  font-size: 16px; /* Larger font size for better readability */
+  font-size: 14px; /* Smaller font size */
   position: relative;
-  background-color: #333; /* Darker background for messages */
+  background: linear-gradient(135deg, #444, #333); /* Gradient background for messages */
   color: #e0e0e0; /* Light text color */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .message.self {
@@ -82,9 +97,9 @@ body, html {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 12px 14px 12px 0; /* Adjusted for a more subtle effect */
+  border-width: 10px 14px 10px 0; /* Adjusted for a more subtle effect */
   border-color: transparent #333 transparent transparent; /* Darker triangle */
-  top: 14px; /* Adjusted for alignment */
+  top: 12px; /* Adjusted for alignment */
   left: -14px; /* Adjusted for alignment */
 }
 
@@ -97,17 +112,17 @@ body, html {
 /* Message Image */
 .message img.message-image {
   max-width: 100%;
-  border-radius: 12px; /* More rounded corners */
-  margin-top: 10px;
+  border-radius: 12px; /* Rounded corners */
+  margin-top: 8px; /* Reduced margin */
 }
 
 /* Typing Indicator */
 .typing-indicator {
-  height: 22px;
-  margin: 10px 20px;
+  height: 20px;
+  margin: 8px 16px;
   font-style: italic;
   color: #aaa; /* Lighter gray text */
-  font-size: 15px; /* Larger font size */
+  font-size: 14px; /* Smaller font size */
 }
 
 /* Input Area */
@@ -115,21 +130,23 @@ body, html {
   display: flex;
   align-items: center;
   padding: 12px;
-  background-color: #1e1e1e; /* Dark background */
+  background-color: #2a2a2a; /* Dark background */
   border-top: 1px solid #444; /* Darker border */
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 /* Image Upload Input */
 .image-upload-label {
-  margin-right: 12px; /* Increased space between media button and text box */
-  font-size: 24px; /* Larger media button */
+  margin-right: 14px; /* Increased space between media button and text box */
+  font-size: 22px; /* Slightly smaller media button */
   cursor: pointer;
   color: #e0e0e0; /* Light text color */
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .image-upload-label:hover {
   color: #007bff; /* Highlight on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
 /* Media Button */
@@ -140,52 +157,54 @@ body, html {
 /* Text Input */
 .message-input {
   flex-grow: 1;
-  padding: 12px; /* Increased padding */
+  padding: 12px; /* Adjusted padding */
   border: 1px solid #555; /* Darker border */
-  border-radius: 25px; /* More rounded corners */
-  font-size: 16px; /* Larger font size */
+  border-radius: 30px; /* Rounded corners */
+  font-size: 14px; /* Smaller font size */
   outline: none;
   background-color: #333; /* Darker background */
   color: #e0e0e0; /* Light text color */
-  padding-left: 20px; /* Increased left padding */
-  transition: background-color 0.3s ease;
+  padding-left: 20px; /* Reduced left padding */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .message-input:focus {
   background-color: #444; /* Slightly lighter background on focus */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Focus shadow effect */
 }
 
 /* Image Preview */
 #image-preview {
-  max-width: 120px; /* Larger preview size */
-  margin-top: 12px;
-  border-radius: 10px; /* More rounded corners */
+  max-width: 110px; /* Reduced preview size */
+  margin-top: 8px; /* Reduced margin */
+  border-radius: 10px; /* Rounded corners */
   display: none; /* Hide by default */
 }
 
 /* Button Styling */
 .send-btn {
-  padding: 12px 18px; /* Slightly larger button */
+  padding: 10px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 50%;
-  margin-left: 10px;
+  margin-left: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  width: 50px; /* Larger width */
-  height: 50px; /* Larger height */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  width: 45px; /* Smaller width */
+  height: 45px; /* Smaller height */
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 /* Send Button Icon */
 .send-btn::before {
   content: '';
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: solid #fff;
   border-width: 2px 2px 0 0;
   transform: rotate(45deg);
@@ -194,24 +213,25 @@ body, html {
 /* Hover and Active States for Button */
 .send-btn:hover {
   background-color: #005bb5;
-  transform: scale(1.05); /* Slightly enlarge button on hover */
+  transform: scale(1.1); /* Slightly enlarge button on hover */
 }
 
 .send-btn:active {
+  background-color: #004494;
   transform: scale(0.95); /* Slightly shrink button on click */
 }
 
 /* Scrollbar Styling */
 .chat-box::-webkit-scrollbar {
-  width: 10px; /* Wider scrollbar */
+  width: 12px; /* Wider scrollbar */
 }
 
 .chat-box::-webkit-scrollbar-track {
-  background-color: #1e1e1e; /* Darker background for track */
+  background: #2a2a2a; /* Darker background for track */
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-  background-color: #007bff;
+  background: #007bff;
   border-radius: 10px;
 }
 
@@ -219,19 +239,19 @@ body, html {
 @media only screen and (max-width: 600px) {
   .message-input {
     padding: 10px;
-    font-size: 14px;
+    font-size: 13px; /* Smaller font size */
   }
   
   .send-btn {
-    width: 45px;
-    height: 45px;
+    width: 40px; /* Smaller width */
+    height: 40px; /* Smaller height */
   }
   
   .message {
-    font-size: 14px;
+    font-size: 13px; /* Smaller font size */
   }
 
   #image-preview {
-    max-width: 100px;
+    max-width: 100px; /* Reduced preview size */
   }
 }
