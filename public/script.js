@@ -8,6 +8,7 @@ document.getElementById('room-name').textContent = roomCode;
 
 document.getElementById("send-btn").addEventListener("click", sendMessage);
 document.getElementById("message-input").addEventListener("input", handleTyping);
+document.getElementById("message-input").addEventListener("keypress", handleKeyPress);
 
 // Handle image file input and preview
 document.getElementById('image-input').addEventListener('change', function(event) {
@@ -135,6 +136,13 @@ async function listenForTyping() {
   }, 500); // Check typing status every 500ms
 }
 
+// Function to handle Enter key press
+function handleKeyPress(event) {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault(); // Prevent new line from being added
+    sendMessage();
+  }
+}
+
 // Initialize
 joinRoom();
-
